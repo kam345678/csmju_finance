@@ -1,38 +1,59 @@
-import { redirect } from "next/navigation";
+// src/app/dashboard/page.tsx
+// import Sidebar from "@/components/components_app/sidebar";
+// import NavbarApp from "@/components/components_aap/navbar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AttendanceChart, DepartmentChart } from "@/components/components_app/charts";
+import EmployeeTable from "@/components/components_app/table";
 
-import { createClient } from "@/lib/supabase/server";
-// import { InfoIcon } from "lucide-react";
-// import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
-
-export default async function DashboardPage() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.auth.getClaims();
-  if (error || !data?.claims) {
-    redirect("/auth/login");
-  }
-
+export default function DashboardPage() {
   return (
-    <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
-        {/* <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
-          <InfoIcon size="16" strokeWidth={2} />
-          This is a dashboard page that you can only see as an authenticated
-          user
-        </div> */}
+    <div className="h-screen bg-gray-500 w-full">
+        <main className="p-6 space-y-6">
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Total Employees</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl  font-bold">120</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>New Hires</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold">10</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Open Positions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold">20</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Departments</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold">03</p>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h1> This is a dashboard page</h1>
+          {/* Charts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <AttendanceChart />
+            <DepartmentChart />
+          </div>
+
+          {/* Table */}
+          <EmployeeTable />
+        </main>
       </div>
-      {/* <div className="flex flex-col gap-2 items-start">
-        <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          {JSON.stringify(data.claims, null, 2)}
-        </pre>
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl mb-4">Next steps</h2>
-        <FetchDataSteps />
-      </div> */}
-    </div>
   );
 }
