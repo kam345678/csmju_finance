@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
-
+import tailwindAnimate from "tailwindcss-animate";
+import colors from "tailwindcss/colors";
 export default {
   darkMode: ["class"],
   content: [
@@ -22,12 +23,12 @@ export default {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#4F46E5", // Indigo
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#F59E0B", // Amber
+          foreground: "#000000",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -51,6 +52,7 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        ...colors,
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -59,5 +61,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],//[require("tailwindcss-animate")],
 } satisfies Config;
