@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "", //"hsl(var(--background))"
+        foreground: "", //hsl(var(--foreground))
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -21,14 +21,6 @@ export default {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "#4F46E5", // Indigo
-          foreground: "#FFFFFF",
-        },
-        secondary: {
-          DEFAULT: "#F59E0B", // Amber
-          foreground: "#000000",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
